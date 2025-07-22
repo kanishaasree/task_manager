@@ -32,6 +32,9 @@ def create_app():
             ])
             db.session.commit()
 
+    @app.route('/')
+    def hello():
+        return 'Hello world, welcome to Railway!'
     return app
 
 if __name__ == "__main__":
