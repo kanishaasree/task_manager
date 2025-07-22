@@ -32,9 +32,14 @@ def create_app():
             ])
             db.session.commit()
 
-    @app.route('/')
-    def hello():
-        return 'Hello world, welcome to Railway!'
+
+    @app.route('/db-health')
+    def db_health():
+        try:
+            db.session.execute('SELECT 1')
+            return 'Database connection OK', 200
+        except Exception as e:
+            return f'Database connection failed: {e}', 500
     return app
 
 if __name__ == "__main__":
