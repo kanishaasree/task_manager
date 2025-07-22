@@ -1,5 +1,5 @@
 import pytest
-from app import create_app
+from main import create_app
 from extension import db
 from models.user import User
 
