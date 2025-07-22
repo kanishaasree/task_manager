@@ -1,16 +1,19 @@
 import os
+from dotenv import load_dotenv
 
-class Config:
+load_dotenv()
+
+class BaseConfig:
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev_key')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class DevelopmentConfig(Config):
+class DevelopmentConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.getenv("DEV_DATABASE_URI", "sqlite:///dev.db")
 
-class ProductionConfig(Config):
+class ProductionConfig(BaseConfig):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")  # Heroku provides this
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
 
 config_by_name = {
     'development': DevelopmentConfig,

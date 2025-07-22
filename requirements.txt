@@ -1,6 +1,6 @@
 Flask
 Flask_SQLAlchemy
 Flask-JWT-Extended
-psycopg2-binary  # PostgreSQL adapter for Python
-python-dotenv    # To load .env
-gunicorn         # Heroku uses this for WSGI
+psycopg2-binary  
+python-dotenv    
+gunicorn         
