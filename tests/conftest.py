@@ -18,7 +18,7 @@ def app():
 
     yield app  # Provide the app to test
 
-    # 🔻 Clean up after tests
+
     with app.app_context():
         db.drop_all()
 
