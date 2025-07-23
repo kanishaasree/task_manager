@@ -5,6 +5,7 @@ from models.task import Task
 from models.user import User
 from routes.tasks import tasks_bp
 from routes.auth import auth_bp
+from sqlalchemy import text
 from dotenv import load_dotenv
 import os
 from config import config_by_name
@@ -39,7 +40,7 @@ def create_app():
     @app.route('/db-health')
     def db_health():
         try:
-            db.session.execute('SELECT 1')
+            db.session.execute(text('SELECT 1'))  # Wrap SQL in text()
             return 'Database connection OK', 200
         except Exception as e:
             return f'Database connection failed: {e}', 500
